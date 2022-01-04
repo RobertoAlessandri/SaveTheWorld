@@ -34,4 +34,4 @@ the health of a specific area’s conditions.
 
 - Generative Human Models: https://github.com/google-research/google-research/tree/master/ghum
 - MediaPipe: https://google.github.io/mediapipe/solutions/pose ; https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
-- Multiperson (? for example "each person = 1 bilion people): https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
+- Multiperson (? for example "each person = 1 bilion people"): https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
