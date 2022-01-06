@@ -1,3 +1,4 @@
+from pickle import TRUE
 import cv2
 import mediapipe as mp
 
@@ -5,6 +6,10 @@ import imutils
 import numpy as np
 import argparse
 import os
+
+import tempfile
+from typing import NamedTuple
+
 from pythonosc import udp_client
 
 from joblib import dump,load
@@ -14,6 +19,7 @@ from SVM import *
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic;
+mp_hands = mp.solutions.hands
 
 
 if __name__ == "__main__":
@@ -44,6 +50,9 @@ if __name__ == "__main__":
   START_SOUND = False  # If True OSC communication with SC is started
 
   with mp_holistic.Holistic(
+      #model_complexity = 2,
+      enable_segmentation = True,
+      refine_face_landmarks = True,
       min_detection_confidence=0.5,
       min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
@@ -54,7 +63,7 @@ if __name__ == "__main__":
         continue
 
       # flip the frame so that it's not in the mirror view
-      image = cv2.flip(image, 1)
+      #image = cv2.flip(image, 1)
 
       # clone the frame
       clone = image.copy()
@@ -73,6 +82,18 @@ if __name__ == "__main__":
       image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
       mp_drawing.draw_landmarks(
           image,
+          results.left_hand_landmarks,
+          mp_holistic.HAND_CONNECTIONS)
+          #landmark_drawing_spec=mp_drawing_styles
+          #.get_default_hand_landmarks_style())  
+      mp_drawing.draw_landmarks(
+          image,
+          results.right_hand_landmarks,
+          mp_holistic.HAND_CONNECTIONS)
+          #landmark_drawing_spec=mp_drawing_styles
+          #.get_default_hand_landmarks_style()) 
+      mp_drawing.draw_landmarks(
+          image,
           results.face_landmarks,
           mp_holistic.FACEMESH_CONTOURS,
           landmark_drawing_spec=None,
@@ -80,10 +101,17 @@ if __name__ == "__main__":
           .get_default_face_mesh_contours_style())
       mp_drawing.draw_landmarks(
           image,
+          results.face_landmarks,
+          mp_holistic.FACEMESH_TESSELATION,
+          landmark_drawing_spec=None,
+          connection_drawing_spec=mp_drawing_styles
+          .get_default_face_mesh_tesselation_style())
+      mp_drawing.draw_landmarks(
+          image,
           results.pose_landmarks,
           mp_holistic.POSE_CONNECTIONS,
           landmark_drawing_spec=mp_drawing_styles
-          .get_default_pose_landmarks_style())
+          .get_default_pose_landmarks_style())      
       # Flip the image horizontally for a selfie-view display.
       cv2.imshow('MediaPipe Holistic', cv2.flip(image, 1))
 
@@ -205,7 +233,6 @@ if __name__ == "__main__":
 
 			  # Send OSC message to stop the synth
         client.send_message("/globe_control", ['stop'])
-  
 
   cap.release()
   cv2.destroyAllWindows()
