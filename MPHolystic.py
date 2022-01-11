@@ -42,7 +42,7 @@ if __name__ == "__main__":
   print('		-Press "a" to save class A images')
   print('		-Press "b" to save class B images')
   print('	-Press "t" to start SVM training (if a model has already been saved, it will be loaded)')
-  print('	-Press "s" to start sound generation (must be pressed after training)')
+  print('	-Press "s" to send OSC messages/packets to Touch Designer (must be pressed after training)')
   print('	-Press "q" to stop sound and "q" to stop image capture')
   
   # initialize weight for running average
@@ -240,8 +240,10 @@ if __name__ == "__main__":
 
 		  # Start OSC communication and sound
       if keypress == ord('s'): 
-        print("sending FELICIO")
-        client.send_message('/globe_control', "MESSAGGIO FELICIO")       
+
+        client.send_message('/globe_control', [1, 2, 3])     
+        #client.send_message('/globe_control', "MESSAGGIO FELICIO")   
+        print("sending FELICIO")  
 
 		  # Stop OSC communication and sound
       if keypress == ord('q'):
