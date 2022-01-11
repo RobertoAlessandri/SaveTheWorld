@@ -41,7 +41,7 @@ def segment(image, threshold=25):
     #where the iterables are passed and comparison is performed based on its return value (use cv2.contourArea as key)
 
     # if # FILL the code:
-    if len(cnts) == 0;
+    if len(cnts) == 0:
         return
     else:
         segmented = max(cnts, key=cv2.contourArea)

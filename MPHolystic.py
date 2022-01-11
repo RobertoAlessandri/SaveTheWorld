@@ -240,7 +240,7 @@ if __name__ == "__main__":
 
 		  # Start OSC communication and sound
       if keypress == ord('s'): 
-
+        print("sending FELICIO")
         client.send_message('/globe_control', "MESSAGGIO FELICIO")       
 
 		  # Stop OSC communication and sound
