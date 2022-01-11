@@ -21,6 +21,18 @@ mp_drawing_styles = mp.solutions.drawing_styles
 mp_holistic = mp.solutions.holistic;
 mp_hands = mp.solutions.hands
 
+# argparse helps writing user-friendly commandline interfaces
+parser = argparse.ArgumentParser()
+# OSC server ip
+parser.add_argument("--ip", default='127.0.0.1', help="The ip of the OSC server")
+# OSC server port (check on SuperCollider)
+parser.add_argument("--port", type=int, default=57120, help="The port the OSC server is listening on")
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Start the UDP Client
+client = udp_client.SimpleUDPClient(args.ip, args.port)
 
 if __name__ == "__main__":
 
@@ -57,6 +69,7 @@ if __name__ == "__main__":
       min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
       success, image = cap.read()
+      #image = imutils.resize(image, width=700)
       if not success:
         print("Ignoring empty camera frame.")
         # If loading a video, use 'break' instead of 'continue'.
@@ -86,12 +99,26 @@ if __name__ == "__main__":
           mp_holistic.HAND_CONNECTIONS)
           #landmark_drawing_spec=mp_drawing_styles
           #.get_default_hand_landmarks_style())  
+      landmarksLHand = []
+      if results.left_hand_landmarks:
+        for id, lm in enumerate(results.left_hand_landmarks.landmark):
+            h, w, c = image.shape 
+            cx, cy = int(lm.x * w), int(lm.y * h) 
+            cv2.putText(image, str(id), (cx,cy), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 1)
+            landmarksLHand.append((cx,cy))    
       mp_drawing.draw_landmarks(
           image,
           results.right_hand_landmarks,
           mp_holistic.HAND_CONNECTIONS)
           #landmark_drawing_spec=mp_drawing_styles
           #.get_default_hand_landmarks_style()) 
+      landmarksRHand = []
+      if results.right_hand_landmarks:
+        for id, lm in enumerate(results.right_hand_landmarks.landmark):
+            h, w, c = image.shape 
+            cx, cy = int(lm.x * w), int(lm.y * h) 
+            cv2.putText(image, str(id), (cx,cy), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 1)
+            landmarksRHand.append((cx,cy))    
       mp_drawing.draw_landmarks(
           image,
           results.face_landmarks,
@@ -105,14 +132,23 @@ if __name__ == "__main__":
           mp_holistic.FACEMESH_TESSELATION,
           landmark_drawing_spec=None,
           connection_drawing_spec=mp_drawing_styles
-          .get_default_face_mesh_tesselation_style())
+          .get_default_face_mesh_tesselation_style())  
       mp_drawing.draw_landmarks(
           image,
           results.pose_landmarks,
           mp_holistic.POSE_CONNECTIONS,
           landmark_drawing_spec=mp_drawing_styles
-          .get_default_pose_landmarks_style())      
-      # Flip the image horizontally for a selfie-view display.
+          .get_default_pose_landmarks_style()) 
+      landmarksPose = []
+      if results.pose_landmarks:
+        for id, lm in enumerate(results.pose_landmarks.landmark):
+          h, w, c = image.shape 
+          cx, cy = int(lm.x * w), int(lm.y * h) 
+          cv2.putText(image, str(id), (cx,cy), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 1)
+          landmarksPose.append((cx,cy))    
+      #mp_drawing.plot_landmarks(results.pose_world_landmarks, mp_holistic.POSE_CONNECTIONS)         
+      # Flip the image horizontally for a selfie-view display.     
+
       cv2.imshow('MediaPipe Holistic', cv2.flip(image, 1))
 
       #image_segment = segment(image)
@@ -166,17 +202,6 @@ if __name__ == "__main__":
         cv2.putText(clone, text, (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
 			  # Here we send the OSC message corresponding
-        if START_SOUND:
-          if class_test == 0:
-					#freq = (c_x/width_roi) * 100
-					#amp = (c_y/height_roi) 
-            client.send_message('/globe_control', 1)
-					#print(client.send_message('/globe_control'))
-          else:
-					#detune = (c_x/width_roi) * 0.1
-					#lfo = (c_y/height_roi) * 10
-            client.send_message('/globe_control', 0)
-					#print(client.send_message('/globe_control'))
 
       # observe the keypress by the user
       keypress = cv2.waitKey(1) & 0xFF
@@ -207,30 +232,20 @@ if __name__ == "__main__":
         SVM = True
 
         if not os.path.isfile('modelSVM.joblib'):
+          print('I am training a SVM classification')
           model = train_svm()
         else:
           model = load('modelSVM.joblib')
+          print('I am starting a SVM classification')
 
 		  # Start OSC communication and sound
-      if keypress == ord('s'):
-        START_SOUND = True
+      if keypress == ord('s'): 
 
-			  # argparse helps writing user-friendly commandline interfaces
-        parser = argparse.ArgumentParser()
-			  # OSC server ip
-        parser.add_argument("--ip", default='127.0.0.1', help="The ip of the OSC server")
-			  # OSC server port (check on SuperCollider)
-        parser.add_argument("--port", type=int, default=57120, help="The port the OSC server is listening on")
-
-			  # Parse the arguments
-        args = parser.parse_args()
-
-			  # Start the UDP Client
-        client = udp_client.SimpleUDPClient(args.ip, args.port)
+        client.send_message('/globe_control', "MESSAGGIO FELICIO")       
 
 		  # Stop OSC communication and sound
       if keypress == ord('q'):
-
+        print('I am stopping OSC communciation')
 			  # Send OSC message to stop the synth
         client.send_message("/globe_control", ['stop'])
 
