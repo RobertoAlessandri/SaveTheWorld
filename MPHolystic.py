@@ -84,6 +84,39 @@ if __name__ == "__main__":
       # get high and width of the frame
       (heigth, width) = image.shape[:2]
 
+      # convert the image to grayscale and blur it
+      gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+      gray = cv2.GaussianBlur(gray, (7, 7), 0)
+
+
+      # to get the background, keep looking till a threshold is reached
+		  # so that our running average model gets calibrated
+      #if num_frames < 30:
+      #  run_avg(gray, aWeight)
+      #else:
+			
+			  # segment the hand region
+        #hand = segment(gray)
+			
+
+			  # check whether hand region is segmented
+        #if hand is not None:
+				  # if yes, unpack the thresholded image and
+				  # segmented region
+          #(thresholded, segmented) = hand
+
+				  # draw the segmented region and display the frame
+          #cv2.drawContours(clone, segmented, -1, (0, 0, 255))
+				
+				
+				  # Center of the hand
+				  #c_x, c_y = detect_palm_center(segmented)
+          #radius = 5
+				  #cv2.circle(thresholded, (c_x, c_y), radius, 0, 1)
+				
+          #cv2.imshow("Thresholded", thresholded)
+
+
       # To improve performance, optionally mark the image as not writeable to
       # pass by reference.
       image.flags.writeable = False
@@ -149,7 +182,8 @@ if __name__ == "__main__":
       #mp_drawing.plot_landmarks(results.pose_world_landmarks, mp_holistic.POSE_CONNECTIONS)         
       # Flip the image horizontally for a selfie-view display.     
 
-      cv2.imshow('MediaPipe Holistic', cv2.flip(image, 1))
+      reproduced_image = image - clone
+      cv2.imshow('MediaPipe Holistic', cv2.flip(reproduced_image, 1))
 
       #image_segment = segment(image)
 
