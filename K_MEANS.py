@@ -81,7 +81,7 @@ def train_svm():
 	return model
 
 
-###############################################################
+##############################--K_MEAN--#################################
 
 from tensorflow.keras.applications.inception_v3 import InceptionV3
 from tensorflow.keras.applications.inception_v3 import preprocess_input
@@ -100,7 +100,7 @@ def image_feature(direc):
     img_name = [];
     for i in tqdm(direc):
         fnam = 'cluster' + '/' + i
-        img = image.load_img(fname, target_size = (224, 224))
+        img = image.load_img(fnam, target_size = (224, 224))
         x = img_to_array(img)
         x = np.expand_dims(x, axis = 0)
         x = preprocess_input(x)
@@ -112,11 +112,11 @@ def image_feature(direc):
 
 # Once we extracted the features and name we store it in img_features and img_name
 
-img_path = os.listdir('cluster')
+img_path = os.listdir('imageK/')
 img_features, img_name = image_feature(img_path)
 
 # Using of KMean clustering. K = 2 because there are two classes only
-#Creating Clusters
+# Creating Clusters
 k = 2
 clusters = KMeans(k, random_state = 40)
 clusters.fit(img_features)
@@ -131,8 +131,8 @@ image_cluster # 0 denotes cat and 1 denotes dog
 
 # separate class a and b in separate folders
 # Made folder to seperate images
-os.mkdir('cats')
-os.mkdir('dogs')
+os.mkdir('classA')
+os.mkdir('classB')
 
 # Images will be seperated according to cluster they belong
 for i in range(len(image_cluster)):
