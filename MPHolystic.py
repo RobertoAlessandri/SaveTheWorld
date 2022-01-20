@@ -69,7 +69,7 @@ if __name__ == "__main__":
       min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
       success, image = cap.read()
-      #image = imutils.resize(image, width=700)
+      image = imutils.resize(image, width=700)
       if not success:
         print("Ignoring empty camera frame.")
         # If loading a video, use 'break' instead of 'continue'.
@@ -209,7 +209,7 @@ if __name__ == "__main__":
           cv2.putText(clone, text, (60, 300), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
 				
 				  # Save training images corresponding to the class
-          cv2.imwrite('images/class_'+class_name+'/img_'+str(num_frames_train)+'.png', image)
+          cv2.imwrite('images/class_'+class_name+'/img_'+str(num_frames_train)+'.png', reproduced_image)
 
 				  # keep track of how many images we are saving
           num_frames_train += 1
@@ -229,9 +229,11 @@ if __name__ == "__main__":
         if class_test == 0:
 				  # print('Class:  A value: ('+str(c_x)+','+str(c_y)+')')
           text = 'Class: A'
+          print(text) 
         else:
 				  # print('Class: B value: ('+str(c_x)+','+str(c_y)+')')
           text = 'Class: B'
+          print(text) 
 
         cv2.putText(clone, text, (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
