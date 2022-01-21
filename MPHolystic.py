@@ -154,20 +154,20 @@ if __name__ == "__main__":
             cx, cy = int(lm.x * w), int(lm.y * h) 
             cv2.putText(image, str(id), (cx,cy), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 1)
             landmarksRHand.append((cx,cy))    
-      mp_drawing.draw_landmarks(
-          image,
-          results.face_landmarks,
-          mp_holistic.FACEMESH_CONTOURS,
-          landmark_drawing_spec=None,
-          connection_drawing_spec=mp_drawing_styles
-          .get_default_face_mesh_contours_style())
-      mp_drawing.draw_landmarks(
-          image,
-          results.face_landmarks,
-          mp_holistic.FACEMESH_TESSELATION,
-          landmark_drawing_spec=None,
-          connection_drawing_spec=mp_drawing_styles
-          .get_default_face_mesh_tesselation_style())  
+      #mp_drawing.draw_landmarks(
+      #    image,
+      #    results.face_landmarks,
+      #    mp_holistic.FACEMESH_CONTOURS,
+      #    landmark_drawing_spec=None,
+      #    connection_drawing_spec=mp_drawing_styles
+      #    .get_default_face_mesh_contours_style())
+      #mp_drawing.draw_landmarks(
+      #    image,
+      #   results.face_landmarks,
+      #    mp_holistic.FACEMESH_TESSELATION,
+      #   landmark_drawing_spec=None,
+      #    connection_drawing_spec=mp_drawing_styles
+      #    .get_default_face_mesh_tesselation_style())  
       mp_drawing.draw_landmarks(
           image,
           results.pose_landmarks,
