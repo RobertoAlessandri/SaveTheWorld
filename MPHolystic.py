@@ -35,6 +35,8 @@ args = parser.parse_args()
 client = udp_client.SimpleUDPClient(args.ip, args.port)
 
 if __name__ == "__main__":
+      
+  counter = 0
 
 # Usage info
   print('USAGE:')
@@ -69,7 +71,7 @@ if __name__ == "__main__":
       min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
       success, image = cap.read()
-      image = imutils.resize(image, width=700)
+    #  image = imutils.resize(image, width=700)
       if not success:
         print("Ignoring empty camera frame.")
         # If loading a video, use 'break' instead of 'continue'.
@@ -221,18 +223,27 @@ if __name__ == "__main__":
 
       if SVM:
 			  # Convert image frame to numpy array
-        image_vector = np.array(image)
+        reproduced_clone = reproduced_image.copy()
+        reproduced_clone = imutils.resize(reproduced_clone, width=350)
+        image_vector = np.array(reproduced_clone)
+      #  image_vector = image_vector[1:2:-1]
+        
+
 
 			  # Use trained SVM to  predict image class
         class_test = model.predict(image_vector.reshape(1, -1))
 
         if class_test == 0:
 				  # print('Class:  A value: ('+str(c_x)+','+str(c_y)+')')
+          counter = counter + 1
+          print(counter)
           text = 'Class: A'
           print(text) 
         else:
 				  # print('Class: B value: ('+str(c_x)+','+str(c_y)+')')
           text = 'Class: B'
+          counter = counter - 50
+          print(counter)
           print(text) 
 
         cv2.putText(clone, text, (70, 45), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
