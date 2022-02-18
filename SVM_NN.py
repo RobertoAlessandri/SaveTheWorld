@@ -1,5 +1,9 @@
 ## performs support vector machine classification
 
+<<<<<<< HEAD
+from turtle import shape
+=======
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
 import cv2
 import os
 import numpy as np
@@ -153,8 +157,16 @@ def train_svm():
 
 	images, images_vector, labels = load_data(class_a_path='images/class_a/', class_b_path='images/class_b/')
 	
+<<<<<<< HEAD
+	print('labels.shape = ', np.shape(labels))
+
 	#img_path = os.listdir('/Users/macbook/Desktop/POLIMI/CORSI/II/I/CPC/Git/Save_The_World/SaveTheWorld/images/')
 	img_features, img_name = image_feature('/Users/macbook/Desktop/POLIMI/CORSI/II/I/CPC/Git/Save_The_World/SaveTheWorld/images/')
+	#print(img_features)
+=======
+	#img_path = os.listdir('/Users/macbook/Desktop/POLIMI/CORSI/II/I/CPC/Git/Save_The_World/SaveTheWorld/images/')
+	img_features, img_name = image_feature('/Users/macbook/Desktop/POLIMI/CORSI/II/I/CPC/Git/Save_The_World/SaveTheWorld/images/')
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
 
 	#img_path_b = os.listdir('/images/class_b/')
 	#img_features_b, img_name_b = image_feature_b(img_path_b)
@@ -173,6 +185,15 @@ def train_svm():
 		# ignore all caught warnings
 		warnings.filterwarnings("ignore")
 		# execute code that will generate warnings
+<<<<<<< HEAD
+
+		print('img_features.shape = ', np.shape(img_features))
+		print('img_features[1].shape = ', np.shape(img_features[1]))
+		img_features = np.delete(img_features, [500, 501], axis = 0)
+		print('img_features.shape after deleting = ', np.shape(img_features))
+
+=======
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
 		xtrain, xtest, ytrain, ytest = train_test_split(img_features, labels, random_state=42)
 
 	param_grid = {'svc__C': [1, 5, 10, 50], 'svc__gamma': [0.0001, 0.0005, 0.001, 0.005]}

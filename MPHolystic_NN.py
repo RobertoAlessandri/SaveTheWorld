@@ -73,8 +73,14 @@ if __name__ == "__main__":
       min_tracking_confidence=0.5) as holistic:
     while cap.isOpened():
       success, image = cap.read()
+<<<<<<< HEAD
+      #image = imutils.resize(image, width=700)
+      #image = cv2.resize(image, (256, 400))
+      image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+=======
       image = imutils.resize(image, width=700)
       #image = cv2.resize(image, (224, 224))
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
     
       if not success:
         print("Ignoring empty camera frame.")
@@ -86,13 +92,23 @@ if __name__ == "__main__":
 
       # clone the frame
       clone = image.copy()
+<<<<<<< HEAD
+      #print('clone shape = ', np.shape(clone))
+      #print('image shape = ', np.shape(image))
+=======
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
 
       # get high and width of the frame
       (heigth, width) = image.shape[:2]
 
       # convert the image to grayscale and blur it
+<<<<<<< HEAD
+      #gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+      #gray = cv2.GaussianBlur(gray, (7, 7), 0)
+=======
       gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
       gray = cv2.GaussianBlur(gray, (7, 7), 0)
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
 
 
       # to get the background, keep looking till a threshold is reached
@@ -174,6 +190,15 @@ if __name__ == "__main__":
       #mp_drawing.plot_landmarks(results.pose_world_landmarks, mp_holistic.POSE_CONNECTIONS)         
       # Flip the image horizontally for a selfie-view display.     
 
+<<<<<<< HEAD
+      image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+      #clone = cv2.cvtColor(clone, cv2.COLOR_BGR2GRAY)
+
+      #print('image shape = ', np.shape(image))
+      #print('clone shape = ', np.shape(clone))
+
+=======
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
       reproduced_image = image - clone
       cv2.imshow('MediaPipe Holistic', cv2.flip(reproduced_image, 1))
 
@@ -213,12 +238,30 @@ if __name__ == "__main__":
 
       if SVM:
 			  # Convert image frame to numpy array
+<<<<<<< HEAD
+
+        
+        reproduced_clone = reproduced_image.copy()
+
+        reproduced_clone = cv2.resize(reproduced_clone, (256, 200))
+
+        #reproduced_clone = imutils.resize(reproduced_clone, width=400)
+        image_vector = np.array(reproduced_clone)
+
+			  # Use trained SVM to  predict image class
+        #print('image vector shape = ', np.shape(image_vector))
+        #print('image vector = ', image_vector)
+        #print('image vector reshaped shape = ', np.shape(image_vector.reshape(1, -1)))
+        #print('image vector reshaped = ', image_vector.reshape(1, -1))
+
+=======
         reproduced_clone = reproduced_image.copy()
 
         reproduced_clone = imutils.resize(reproduced_clone, width=405)
         image_vector = np.array(reproduced_clone)
 
 			  # Use trained SVM to  predict image class
+>>>>>>> 5238baaa96214b575274ec6cb235269aa565318c
         class_test = model.predict(image_vector.reshape(1, -1))
 
         if class_test == 0:
