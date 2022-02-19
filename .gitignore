@@ -1,3 +1,10 @@
 
 Pose Classification video for first presentation - Copia.mov
 Pose Classification video for first presentation.mp4
+images/class_a/.DS_Store
+images/class_b/.DS_Store
+MPHolystic_NN.py
+SVM_NN.py
+__pycache__/SVM_NNrien_Mod.cpython-38.pyc
+__pycache__/SVM_NN.cpython-38.pyc
+__pycache__/hand_detection_utils.cpython-38.pyc
