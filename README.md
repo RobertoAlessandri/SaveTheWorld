@@ -33,9 +33,10 @@ the health of a specific area’s conditions.
 # Useful Links on Environment
 
 - Generative Human Models: https://github.com/google-research/google-research/tree/master/ghum
-- Multiperson (? for example "each person = 1 bilion people"): https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
+- Multiperson: https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
 
 # Bibliography
+
 MediaPipe:
 - GitHub: https://google.github.io/mediapipe/solutions/pose; 
 - COSA CHE NON CONOSCO: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
@@ -43,6 +44,6 @@ MediaPipe:
 TouchDesigner: 
 - Official documentation: https://docs.derivative.ca/Main_Page
 - Introductive course (ITA): https://www.youtube.com/playlist?list=PLhhSecfe3762IytiKsT472xhnF1LciVJE
-- Most Useful channel: https://www.youtube.com/channel/UCONptu0J1PCrW9YfBtSdqjA
+- Useful channel: https://www.youtube.com/channel/UCONptu0J1PCrW9YfBtSdqjA
 - Introductive site with example: https://alltd.org/category/beginner/
 ***
