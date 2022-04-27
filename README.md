@@ -37,7 +37,8 @@ the health of a specific area’s conditions.
 
 # Bibliography
 MediaPipe:
-https://google.github.io/mediapipe/solutions/pose; https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
+- GitHub: https://google.github.io/mediapipe/solutions/pose; 
+- COSA CHE NON CONOSCO: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
 ***
 TouchDesigner: 
 - Official documentation: https://docs.derivative.ca/Main_Page
