@@ -9,20 +9,21 @@ The top feature is the extremely user-reactive interface.
 </p>
 
 You can find more here: 
+This version is avaiable only for desktop device.
+
 ***
 
 # Abstract
 
-Today we hear about climate change almost everyday, on the news, tv shows and social
+Today, we hear about climate change almost everyday: on the news, tv shows and social
 media. It’s a topic that is urgent to address, in order to preserve the planet we’re living in and
-be sure to make it habitable for further generations. The situation is critical and we all have to 
-make an effort and change our lifestyle in order to reach a sustainable result. 
-The goal of this project is to make people aware of how simple daily actions can heavily impact on the 
-environment, for the worse or the better. With this concept in our mind,
-we thought that an interactive installation could send a clear message to the user, i.e.
-that everybody can contribute to change things for the better and so to "Save the World". 
+be sure to make it habitable for further generations. 
+The situation is critical and we all have to make an effort changing our lifestyle in order to reach a sustainable result. 
+The goal of this project is to make people aware of how simple daily actions can heavily impact the 
+environment. With this concept in our mind, we thought that an interactive installation could send a clear message to the user, i.e.
+that everybody can contribute to change things for the better, and so to "Save the World". 
 We gathered data from the web to understand how much our daily habits can threat or can help our planet 
-in terms of CO2 emissions, that we used as a damage quantifier. 
+in terms of CO2 emissions, that we used as a impact quantifier. 
 Save the World's interface consists in icons showing the daily actions we chose and a 3D globe representing
 our planet. The user will look at the icon and try to mimic the action displayed in it with hand gestures. 
 These will be captured and recognized, then, with a strong real time visual feedback, the future impact of what
@@ -38,14 +39,15 @@ In the end, Supercollider will generate soundscapes according to the health cond
 
 # Useful Links on Environment
 
+- App to measure your environment impact: https://aworld.org/
 - Generative Human Models: https://github.com/google-research/google-research/tree/master/ghum
 - Multiperson: https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
 
-# Bibliography
+# References
 
 MediaPipe:
 - GitHub: https://google.github.io/mediapipe/solutions/pose; 
-- COSA CHE NON CONOSCO: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
+- Classification article: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
 
 TouchDesigner: 
 - Official documentation: https://docs.derivative.ca/Main_Page
