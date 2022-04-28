@@ -1,5 +1,15 @@
 # SaveTheWorld
 
+SaveTheWorld is creative programming project, with the aim of raising the awareness of the impact of our gestures on the environment.
+This installation is implemented with python (back-end), TouchDesigner (front-end) e Supercollider for the music landscape.
+The top feature is the extremely user-reactive interface.
+
+<p align="center">
+  <img src="logo-black.png">
+</p>
+
+***
+
 # Abstract
 
 Today we hear about climate change almost everyday, on the news, tv shows and social
