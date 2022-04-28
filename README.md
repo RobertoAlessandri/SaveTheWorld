@@ -5,9 +5,10 @@ This installation is implemented with python (back-end), TouchDesigner (front-en
 The top feature is the extremely user-reactive interface.
 
 <p align="center">
-  <img src="logo-black.png">
+  <img src="BigliettoCPAC.png">
 </p>
 
+You can find more here: 
 ***
 
 # Abstract
@@ -45,7 +46,7 @@ In the end, Supercollider will generate soundscapes according to the health cond
 MediaPipe:
 - GitHub: https://google.github.io/mediapipe/solutions/pose; 
 - COSA CHE NON CONOSCO: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
-***
+
 TouchDesigner: 
 - Official documentation: https://docs.derivative.ca/Main_Page
 - Introductive course (ITA): https://www.youtube.com/playlist?list=PLhhSecfe3762IytiKsT472xhnF1LciVJE
