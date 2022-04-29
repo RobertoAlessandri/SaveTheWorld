@@ -42,14 +42,14 @@ through OSC messages with Python, the latter responsible for taking and classify
 # Useful Links on Environment
 
 - App to measure your environment impact: https://aworld.org/
-- Generative Human Models: https://github.com/google-research/google-research/tree/master/ghum
-- Multiperson: https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
 
 # References
 
 MediaPipe:
 - GitHub: https://google.github.io/mediapipe/solutions/pose; 
 - Classification article: https://ai.googleblog.com/2020/08/on-device-real-time-body-pose-tracking.html
+- Generative Human Models: https://github.com/google-research/google-research/tree/master/ghum
+- Multiperson: https://www.section.io/engineering-education/multi-person-pose-estimator-with-python/
 
 TouchDesigner: 
 - Official documentation: https://docs.derivative.ca/Main_Page
