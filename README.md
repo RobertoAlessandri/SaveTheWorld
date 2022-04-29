@@ -32,7 +32,7 @@ The degradation, or the improvement, of the health of our planet will make the u
 In this way, a sensibilization takes place with the aim that even in real life he will remember what effect his lifestyle can have and act as a consequence. 
 To have a visual representation of the world Touchdesigner has been used, exploiting its compatibility 
 through OSC messages with Python, the latter responsible for taking and classifying the gestures. 
-In the end, Supercollider will generate soundscapes according to the health conditions.
+
 
 # Useful Links on Environment
 
