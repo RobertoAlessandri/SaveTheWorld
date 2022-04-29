@@ -3,7 +3,6 @@ s.boot;
 //n = NetAddr.new("127.0.0.1", 7771);
 
 (
-(
 n = NetAddr.new("127.0.0.1", 7771);
 //NetAddr.langPort;    // retrieve the current port SC is listening to
 thisProcess.openUDPPort(7771); // attempt to open 7771
