@@ -1,8 +1,7 @@
 # SaveTheWorld
 
 SaveTheWorld is creative programming project, with the aim of raising the awareness of the impact of our gestures on the environment.
-This installation is implemented with Python (back-end) and TouchDesigner (front-end). 
-The top feature is the extremely user-reactive interface.
+This installation is implemented with Python (back-end), TouchDesigner (front-end) and SuperCollider for the music landscape. The top feature is the extremely user-reactive interface.
 
 <p align="center">
   <img src="BigliettoCPAC.png">
@@ -31,7 +30,8 @@ of the world does that action at that very same moment.
 The degradation, or the improvement, of the health of our planet will make the user associate the actions mimiced and their impact. 
 In this way, a sensibilization takes place with the aim that even in real life he will remember what effect his lifestyle can have and act as a consequence. 
 To have a visual representation of the world Touchdesigner has been used, exploiting its compatibility 
-through OSC messages with Python, the latter responsible for taking and classifying the gestures. 
+through OSC messages with Python, the latter responsible for taking and classifying the gestures. In the end, Supercollider will generate soundscapes.
+
 
 
 # Useful Links on Environment
